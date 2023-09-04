@@ -1,15 +1,12 @@
 package com.example.csmSystem.controller;
 
 import com.example.csmSystem.dto.TestDto;
-import com.example.csmSystem.entity.Test;
-import com.example.csmSystem.mapper.TestMapper;
 import com.example.csmSystem.service.TestService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/test")
