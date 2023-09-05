@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
 
@@ -27,6 +26,6 @@ public class Test {
     @Column(name = "Name")
     private String name;
 
-    @Column(name = "Local_date_time")
-    private LocalDateTime localDateTime;
+    @Column(name = "Business_date")
+    private LocalDateTime businessDate;
 }

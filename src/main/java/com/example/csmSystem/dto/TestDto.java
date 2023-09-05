@@ -18,5 +18,5 @@ public class TestDto {
     private String name;
 
     @NotEmpty(message = "Local Date Time should not be null or empty")
-    private LocalDateTime localDateTime;
+    private LocalDateTime businessDate;
 }

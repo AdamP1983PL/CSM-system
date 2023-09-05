@@ -57,7 +57,7 @@ public class TestServiceImpl implements TestService {
                 () -> new ResourceNotFoundException("Test", "id", testDto.getId())
         );
         existingTest.setName(testDto.getName());
-        existingTest.setLocalDateTime(testDto.getLocalDateTime());
+        existingTest.setBusinessDate(testDto.getBusinessDate());
         Test updatedTest = testRepository.save(existingTest);
         return TestMapper.MAPPER.mapToTestDto(updatedTest);
     }
