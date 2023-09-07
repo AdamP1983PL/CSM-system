@@ -1,10 +1,12 @@
 package com.example.csmSystem.controller;
 
 import com.example.csmSystem.dto.TestDto;
-import com.example.csmSystem.service.TestService;
+import com.example.csmSystem.service.TestServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +21,10 @@ import java.util.List;
 @RequestMapping("/test")
 public class TestController {
 
-    private TestService testService;
+    private final TestServiceImpl testServiceImpl;
 
-    public TestController(TestService testService) {
-        this.testService = testService;
+    public TestController(TestServiceImpl testServiceImpl) {
+        this.testServiceImpl = testServiceImpl;
     }
 
     /*localDateTime hardcoded in POSTMAN!!!*/
@@ -36,7 +38,7 @@ public class TestController {
     )
     @PostMapping("/create")
     public ResponseEntity<TestDto> createTest(@RequestBody TestDto testDto) {
-        TestDto savedTest = testService.createTest(testDto);
+        TestDto savedTest = testServiceImpl.createTest(testDto);
         return new ResponseEntity<>(savedTest, HttpStatus.CREATED);
     }
 
@@ -50,7 +52,7 @@ public class TestController {
     )
     @GetMapping("/{id}")
     public ResponseEntity<TestDto> getTestById(@PathVariable("id") Long testId) {
-        TestDto testDto = testService.getTestById(testId);
+        TestDto testDto = testServiceImpl.getTestById(testId);
         return new ResponseEntity<>(testDto, HttpStatus.OK);
     }
 
@@ -64,7 +66,7 @@ public class TestController {
     )
     @GetMapping("/allTests")
     public ResponseEntity<List<TestDto>> getAllTests() {
-        List<TestDto> allTests = testService.getAllTests();
+        List<TestDto> allTests = testServiceImpl.getAllTests();
         return new ResponseEntity<>(allTests, HttpStatus.OK);
     }
 
@@ -80,7 +82,7 @@ public class TestController {
     public ResponseEntity<TestDto> updateTest(@PathVariable("id") Long testId,
                                               @RequestBody TestDto testDto) {
         testDto.setId(testId);
-        TestDto updatedTestDto = testService.updateTest(testDto);
+        TestDto updatedTestDto = testServiceImpl.updateTest(testDto);
         return new ResponseEntity<>(updatedTestDto, HttpStatus.OK);
     }
 
@@ -94,7 +96,8 @@ public class TestController {
     )
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTestById(@PathVariable("id") Long testId) {
-        testService.deleteTest(testId);
+        testServiceImpl.deleteTest(testId);
         return new ResponseEntity<>("Test deleted", HttpStatus.OK);
     }
 }
+
