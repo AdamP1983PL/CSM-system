@@ -1,19 +1,18 @@
 package com.example.csmSystem.service;
 
-import com.example.csmSystem.dto.TestDto;
-import org.springframework.stereotype.Service;
+import com.example.csmSystem.service.dto.TestDto;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface TestService {
-
     TestDto createTest(TestDto testDto);
 
-    TestDto getTestById(Long id);
+    TestDto findTestById(UUID id);
 
-    List<TestDto> getAllTests();
+    List<TestDto> findAllTests();
 
     TestDto updateTest(TestDto testDto);
 
-    void deleteTest (Long id);
+    TestDto deleteTest(UUID id);
 }

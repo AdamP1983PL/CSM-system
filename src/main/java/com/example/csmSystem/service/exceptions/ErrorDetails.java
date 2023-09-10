@@ -1,4 +1,4 @@
-package com.example.csmSystem.exceptions;
+package com.example.csmSystem.service.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

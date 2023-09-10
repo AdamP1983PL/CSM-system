@@ -1,7 +1,7 @@
-package com.example.csmSystem.mapper;
+package com.example.csmSystem.service.mapper;
 
-import com.example.csmSystem.dto.TestDto;
-import com.example.csmSystem.entity.Test;
+import com.example.csmSystem.model.entity.Test;
+import com.example.csmSystem.service.dto.TestDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -9,10 +9,10 @@ import org.mapstruct.factory.Mappers;
 public interface TestMapper {
 
     /*notes for myself:
-    * we don't have to implements these methods, MapStruct will create a code to implement these
-    * methods at a compilation time,
-    * TestMapper MAPPER... will provide the implementation for this interface at a compilation time
-    */
+     * we don't have to implements these methods, MapStruct will create a code to implement these
+     * methods at a compilation time,
+     * TestMapper MAPPER... will provide the implementation for this interface at a compilation time
+     */
     TestMapper MAPPER = Mappers.getMapper(TestMapper.class);
 
 

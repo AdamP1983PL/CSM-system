@@ -1,4 +1,4 @@
-package com.example.csmSystem.dto;
+package com.example.csmSystem.service.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 )
 public class TestDto {
 
-    private long id;
+    private UUID id;
 
     @Schema(
             description = "Test name"

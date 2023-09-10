@@ -1,4 +1,4 @@
-package com.example.csmSystem.exceptions;
+package com.example.csmSystem.service.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NameAlreadyExistException.class)
     public ResponseEntity<ErrorDetails> handleNameAlreadyExistsException(NameAlreadyExistException exception,
-                                                                         WebRequest webRequest){
+                                                                         WebRequest webRequest) {
 
         ErrorDetails errorDetails = new ErrorDetails(
                 LocalDateTime.now(),
@@ -49,11 +49,11 @@ public class GlobalExceptionHandler {
     }
 
     /* notes for myself:
-    *  test Exception to handle all the other kinds of exceptions
-    * */
+     *  test Exception to handle all the other kinds of exceptions
+     * */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleAllTheOtherExceptions(Exception exception,
-                                                                    WebRequest webRequest){
+                                                                    WebRequest webRequest) {
 
         ErrorDetails errorDetails = new ErrorDetails(
                 LocalDateTime.now(),
