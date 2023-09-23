@@ -60,6 +60,26 @@ public class TestPagingAndSortingImpl implements TestPaginationAndSorting {
 
         return testRepository.findAll(sortByFirstThenSecondField);
     }
+
+    @Override
+    public List<Test> paginateAndSortByOneFieldAsc(int pageNumber, int pageSize, Sort sort) {
+
+        sort = Sort.by(Sort.Direction.ASC);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        Page<Test> page = testRepository.findAll(pageable);
+
+        return page.getContent();
+    }
+
+    @Override
+    public List<Test> paginateAndSortByOneFieldDesc(int pageNumber, int pageSize, Sort sort) {
+
+        sort = Sort.by(Sort.Direction.DESC);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        Page<Test> page = testRepository.findAll(pageable);
+
+        return page.getContent();
+    }
 }
 
 

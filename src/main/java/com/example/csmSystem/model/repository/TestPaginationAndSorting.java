@@ -21,4 +21,7 @@ public interface TestPaginationAndSorting {
     List<Test> sortByTwoFields(Sort sort, String firstFieldName,
                                String secondFieldName, String sortDir);
 
+    List<Test> paginateAndSortByOneFieldAsc(int pageNumber, int pageSize, Sort sort);
+
+    List<Test> paginateAndSortByOneFieldDesc(int pageNumber, int pageSize, Sort sort);
 }
