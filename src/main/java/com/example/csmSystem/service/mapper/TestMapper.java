@@ -1,6 +1,6 @@
 package com.example.csmSystem.service.mapper;
 
-import com.example.csmSystem.model.entity.Test;
+import com.example.csmSystem.model.entity.TestClass;
 import com.example.csmSystem.service.dto.TestDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -20,7 +20,7 @@ public interface TestMapper {
      * if fields names are different we must use @Mapping annotation:
      * @Mapping(source = "sourceName(example: email)", target = "targetName(example: emailAddress)"
      */
-    TestDto mapToTestDto(Test test);
+    TestDto mapToTestDto(TestClass testClass);
 
-    Test mapToTest(TestDto testDto);
+    TestClass mapToTest(TestDto testDto);
 }

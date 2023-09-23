@@ -1,6 +1,6 @@
 package com.example.csmSystem.model.repository;
 
-import com.example.csmSystem.model.entity.Test;
+import com.example.csmSystem.model.entity.TestClass;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -10,45 +10,45 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TestPagingAndSortingImpl implements TestPaginationAndSorting {
+public class TestClassPagingAndSortingImpl implements TestClassPaginationAndSorting {
 
-    private final TestRepository testRepository;
+    private final TestClassRepository testClassRepository;
 
-    public TestPagingAndSortingImpl(TestRepository testRepository) {
-        this.testRepository = testRepository;
+    public TestClassPagingAndSortingImpl(TestClassRepository testClassRepository) {
+        this.testClassRepository = testClassRepository;
     }
 
     @Override
-    public Page<Test> findAll(Pageable pageable, int pageNumber, int pageSize) {
-        return testRepository.findAll(PageRequest.of(pageNumber, pageSize));
+    public Page<TestClass> findAll(Pageable pageable, int pageNumber, int pageSize) {
+        return testClassRepository.findAll(PageRequest.of(pageNumber, pageSize));
     }
 
     @Override
-    public List<Test> sortByOneFieldAsc(Sort sort) {
-        return testRepository.findAll(Sort.by(Sort.Direction.ASC));
+    public List<TestClass> sortByOneFieldAsc(Sort sort) {
+        return testClassRepository.findAll(Sort.by(Sort.Direction.ASC));
     }
 
     @Override
-    public List<Test> sortByOneFieldDesc(Sort sort) {
-        return testRepository.findAll(Sort.by(Sort.Direction.DESC));
+    public List<TestClass> sortByOneFieldDesc(Sort sort) {
+        return testClassRepository.findAll(Sort.by(Sort.Direction.DESC));
     }
 
 /*  Assuming that sort direction is coming from the Client
 *   sortDir = "asc" || sortDir="desc"*/
     @Override
-    public List<Test> sortByOneFieldDynamically(Sort sort, String fieldName, String sortDir) {
+    public List<TestClass> sortByOneFieldDynamically(Sort sort, String fieldName, String sortDir) {
 
         sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())
                 ? Sort.by(fieldName).ascending() : Sort.by(fieldName).descending();
 
-        return testRepository.findAll(sort);
+        return testClassRepository.findAll(sort);
     }
 
     /*  Assuming that sort direction is coming from the Client
      *   sortDir = "asc" || sortDir="desc"*/
     @Override
-    public List<Test> sortByTwoFields(Sort sort, String firstFieldName,
-                                      String secondFieldName, String sortDir) {
+    public List<TestClass> sortByTwoFields(Sort sort, String firstFieldName,
+                                           String secondFieldName, String sortDir) {
 
         Sort sortByFirstField = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())
                 ? Sort.by(firstFieldName).ascending() : Sort.by(firstFieldName).descending();
@@ -58,25 +58,25 @@ public class TestPagingAndSortingImpl implements TestPaginationAndSorting {
 
         Sort sortByFirstThenSecondField = sortByFirstField.and(sortBySecondField);
 
-        return testRepository.findAll(sortByFirstThenSecondField);
+        return testClassRepository.findAll(sortByFirstThenSecondField);
     }
 
     @Override
-    public List<Test> paginateAndSortByOneFieldAsc(int pageNumber, int pageSize, Sort sort) {
+    public List<TestClass> paginateAndSortByOneFieldAsc(int pageNumber, int pageSize, Sort sort) {
 
         sort = Sort.by(Sort.Direction.ASC);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
-        Page<Test> page = testRepository.findAll(pageable);
+        Page<TestClass> page = testClassRepository.findAll(pageable);
 
         return page.getContent();
     }
 
     @Override
-    public List<Test> paginateAndSortByOneFieldDesc(int pageNumber, int pageSize, Sort sort) {
+    public List<TestClass> paginateAndSortByOneFieldDesc(int pageNumber, int pageSize, Sort sort) {
 
         sort = Sort.by(Sort.Direction.DESC);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
-        Page<Test> page = testRepository.findAll(pageable);
+        Page<TestClass> page = testClassRepository.findAll(pageable);
 
         return page.getContent();
     }
