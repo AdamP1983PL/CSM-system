@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    /* notes for myself:
+    /*
      *  we need to pass two parameters to this method: (TypeOfTheException exception, WebRequest webRequest)
      *  in order to get some details from webRequest;
      *
@@ -48,7 +48,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
-    /* notes for myself:
+    /*
      *  test Exception to handle all the other kinds of exceptions
      * */
     @ExceptionHandler(Exception.class)

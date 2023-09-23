@@ -25,6 +25,9 @@ public class TestDto {
     @NotEmpty(message = "Name should not be null or empty")
     private String name;
 
+    @NotEmpty(message = "Age should not be null or empty")
+    private int age;  // only for testing sortByMultipleFields()
+
     @Schema(
             description = "Business date"
     )

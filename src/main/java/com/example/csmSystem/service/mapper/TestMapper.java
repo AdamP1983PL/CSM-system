@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface TestMapper {
 
-    /*notes for myself:
+    /*
      * we don't have to implements these methods, MapStruct will create a code to implement these
      * methods at a compilation time,
      * TestMapper MAPPER... will provide the implementation for this interface at a compilation time
