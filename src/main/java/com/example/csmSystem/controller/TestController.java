@@ -36,5 +36,7 @@ public class TestController implements TestControllerApi {
     public ResponseEntity<TestDto> deleteTestById(@PathVariable("id") UUID testId) {
         return new ResponseEntity<>(testServiceImpl.deleteTest(testId), HttpStatus.OK);
     }
+
+    // ...
 }
 

@@ -8,7 +8,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
 
-/* notes for myself:
+/*
  * we use @ControllerAdvice to handle the exceptions globally
  * */
 @ControllerAdvice
