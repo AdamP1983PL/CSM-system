@@ -44,4 +44,33 @@ public interface TestControllerApi {
     @ApiResponse(responseCode = "200", description = "Http Status 200 SUCCESS")
     @DeleteMapping("/{id}")
     ResponseEntity<TestDto> deleteTestById(@PathVariable("id") UUID testId);
+
+//    ResponseEntity<Page<TestDto>> findAllTests(@PathVariable("pageNumber") @PathVariable("pageSize"));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

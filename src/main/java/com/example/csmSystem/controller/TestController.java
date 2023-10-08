@@ -37,6 +37,10 @@ public class TestController implements TestControllerApi {
         return new ResponseEntity<>(testServiceImpl.deleteTest(testId), HttpStatus.OK);
     }
 
+//    public ResponseEntity<Page<TestDto>> findAllTests(
+//            @RequestParam(name = "pageNumber", defaultValue = "0")
+//    )
+
     // ...
 }
 
