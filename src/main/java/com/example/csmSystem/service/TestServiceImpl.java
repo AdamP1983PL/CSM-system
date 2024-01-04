@@ -82,7 +82,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public List<TestDto> sortByOneFieldAsc(Sort sort) {
+    public List<TestDto> sortAsc(Sort sort) {
         log.info("Find all tests ASC using Sort");
 
         return testClassRepository.findAll(Sort.by(Sort.Direction.ASC)).stream()
@@ -91,7 +91,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public List<TestDto> sortByOneFieldDesc(Sort sort) {
+    public List<TestDto> sortDesc(Sort sort) {
         log.info("Find all tests DESC using Sort");
 
         return testClassRepository.findAll(Sort.by(Sort.Direction.DESC)).stream()
@@ -102,10 +102,10 @@ public class TestServiceImpl implements TestService {
     /*  Assuming that sort direction is coming from the Client
      *   sortDir = "asc" || sortDir="desc"*/
     @Override
-    public List<TestDto> sortByOneFieldDynamically(Sort sort, String fieldName, String sortDir) {
+    public List<TestDto> sortByOneFieldDynamically(String fieldName, String sortDir) {
         log.info("Find all tests using Sort by one field dynamically");
 
-        sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())
                 ? Sort.by(fieldName).ascending() : Sort.by(fieldName).descending();
 
         return testClassRepository.findAll(sort).stream()
@@ -116,7 +116,7 @@ public class TestServiceImpl implements TestService {
     /*  Assuming that sort direction is coming from the Client
      *   sortDir = "asc" || sortDir="desc"*/
     @Override
-    public List<TestDto> sortByTwoFields(String firstField, String secondField, String sortDir) {
+    public List<TestDto> sortByTwoFieldsDynamically(String firstField, String secondField, String sortDir) {
         log.info("Find all test using Sort by two fields dynamically");
 
         Sort sortByFirstField = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())
@@ -155,4 +155,5 @@ public class TestServiceImpl implements TestService {
                 .map(TestMapper.MAPPER::mapToTestDto)
                 .collect(Collectors.toList());
     }
+
 }

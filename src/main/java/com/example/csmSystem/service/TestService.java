@@ -20,13 +20,13 @@ public interface TestService {
 
     Page<TestDto> findAllWithPagination(int pageNumber, int pageSize);
 
-    List<TestDto> sortByOneFieldAsc(Sort sort);
+    List<TestDto> sortAsc(Sort sort);
 
-    List<TestDto> sortByOneFieldDesc(Sort sort);
+    List<TestDto> sortDesc(Sort sort);
 
-    List<TestDto> sortByOneFieldDynamically(Sort sort, String fieldName, String sortDir);
+    List<TestDto> sortByOneFieldDynamically(String fieldName, String sortDir);
 
-    List<TestDto> sortByTwoFields(String firstField, String secondField, String sortDir);
+    List<TestDto> sortByTwoFieldsDynamically(String firstField, String secondField, String sortDir);
 
     List<TestDto> paginateAndSortByOneFieldAsc(int pageNumber, int pageSize,  String fieldName);
 
