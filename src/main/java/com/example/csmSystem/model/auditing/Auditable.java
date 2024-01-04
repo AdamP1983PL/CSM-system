@@ -13,7 +13,7 @@ import java.util.Date;
 
 import static jakarta.persistence.TemporalType.TIMESTAMP;
 
-/*@MappedSuperclass annotation. This means that this class has not table created for it*/
+/*@MappedSuperclass annotation. This means that this class has no table created for it*/
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)

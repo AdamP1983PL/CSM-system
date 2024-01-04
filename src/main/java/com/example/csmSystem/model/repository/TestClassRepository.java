@@ -7,5 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface TestClassRepository extends JpaRepository<TestClass, UUID> {
+
     Optional<TestClass> findTestByName(String name);
+
 }

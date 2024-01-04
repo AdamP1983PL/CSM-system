@@ -26,16 +26,25 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorDetails> handleResourceNotFoundException(ResourceNotFoundException exception,
                                                                         WebRequest webRequest) {
-        return new ResponseEntity<>(ErrorDetails.builder().timestamp(LocalDateTime.now()).message(exception.getMessage())
-                .path(webRequest.getDescription(false)).errorCode("USER_NOT_FOUND").build(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(ErrorDetails.builder()
+                .timestamp(LocalDateTime.now())
+                .message(exception.getMessage())
+                .path(webRequest.getDescription(false))
+                .errorCode("USER_NOT_FOUND")
+                .build()
+                , HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(NameAlreadyExistException.class)
     public ResponseEntity<ErrorDetails> handleNameAlreadyExistsException(NameAlreadyExistException exception,
                                                                          WebRequest webRequest) {
-        return new ResponseEntity<>(ErrorDetails.builder().timestamp(LocalDateTime.now()).message(exception.getMessage())
+        return new ResponseEntity<>(ErrorDetails.builder()
+                .timestamp(LocalDateTime.now())
+                .message(exception.getMessage())
                 .path(webRequest.getDescription(false))
-                .errorCode("TEST_NAME_ALREADY_EXISTS_IN_THE_DB").build(), HttpStatus.BAD_REQUEST);
+                .errorCode("TEST_NAME_ALREADY_EXISTS_IN_THE_DB")
+                .build()
+                , HttpStatus.BAD_REQUEST);
     }
 
     /*
@@ -44,8 +53,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleAllTheOtherExceptions(Exception exception,
                                                                     WebRequest webRequest) {
-        return new ResponseEntity<>(ErrorDetails.builder().timestamp(LocalDateTime.now()).message(exception.getMessage())
+        return new ResponseEntity<>(ErrorDetails.builder()
+                .timestamp(LocalDateTime.now())
+                .message(exception.getMessage())
                 .path(webRequest.getDescription(false))
-                .errorCode("TEST_EXCEPTION_TO_HANDLE_ALL_THE_OTHER_EXCEPTIONS").build(), HttpStatus.INTERNAL_SERVER_ERROR);
+                .errorCode("TEST_EXCEPTION_TO_HANDLE_ALL_THE_OTHER_EXCEPTIONS")
+                .build()
+                , HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

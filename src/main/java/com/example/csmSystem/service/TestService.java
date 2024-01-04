@@ -20,18 +20,17 @@ public interface TestService {
 
     TestDto deleteTest(UUID id);
 
-    Page<TestClass> findAll(Pageable pageable, int pageNumber, int pageSize);
+    Page<TestDto> findAll(int pageNumber, int pageSize);
 
-    List<TestClass> sortByOneFieldAsc(Sort sort);
+    List<TestDto> sortByOneFieldAsc(Sort sort);
 
-    List<TestClass> sortByOneFieldDesc(Sort sort);
+    List<TestDto> sortByOneFieldDesc(Sort sort);
 
-    List<TestClass> sortByOneFieldDynamically(Sort sort, String fieldName, String sortDir);
+    List<TestDto> sortByOneFieldDynamically(Sort sort, String fieldName, String sortDir);
 
-    List<TestClass> sortByTwoFields(Sort sort, String firstFieldName,
-                                    String secondFieldName, String sortDir);
+    List<TestDto> sortByTwoFields(String firstField, String secondField, String sortDir);
 
-    List<TestClass> paginateAndSortByOneFieldAsc(int pageNumber, int pageSize, Sort sort);
+    List<TestDto> paginateAndSortByOneFieldAsc(int pageNumber, int pageSize,  String fieldName);
 
-    List<TestClass> paginateAndSortByOneFieldDesc(int pageNumber, int pageSize, Sort sort);
+    List<TestDto> paginateAndSortByOneFieldDesc(int pageNumber, int pageSize, String fieldName);
 }
