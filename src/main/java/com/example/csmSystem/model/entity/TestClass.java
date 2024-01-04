@@ -26,5 +26,7 @@ public class TestClass extends Auditable<String> {
 
     public TestClass(String name, LocalDateTime businessDate) {
         super();
+        this.name = name;
+        this.businessDate = businessDate;
     }
 }

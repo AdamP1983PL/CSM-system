@@ -70,7 +70,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public Page<TestDto> findAll(int pageNumber, int pageSize) {
+    public Page<TestDto> findAllWithPagination(int pageNumber, int pageSize) {
         log.info("Find all test with Pageable: page number {}, page size {}", pageNumber, pageSize);
 
         Page<TestClass> pageResult = testClassRepository.findAll(PageRequest.of(pageNumber, pageSize));

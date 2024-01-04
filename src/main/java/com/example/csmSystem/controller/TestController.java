@@ -3,9 +3,9 @@ package com.example.csmSystem.controller;
 import com.example.csmSystem.service.TestServiceImpl;
 import com.example.csmSystem.service.dto.TestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,30 +18,34 @@ import java.util.UUID;
 public class TestController implements TestControllerApi {
     private final TestServiceImpl testServiceImpl;
 
-    public ResponseEntity<TestDto> createTest(@RequestBody TestDto testDto) {
-        return new ResponseEntity<>(testServiceImpl.createTest(testDto), HttpStatus.CREATED);
+    @Override
+    public TestDto createTest(@RequestBody TestDto testDto) {
+        return testServiceImpl.createTest(testDto);
     }
 
-    public ResponseEntity<TestDto> getTestById(@PathVariable("id") UUID testId) {
-        return new ResponseEntity<>(testServiceImpl.findTestById(testId), HttpStatus.OK);
+    @Override
+    public TestDto getTestById(@PathVariable("id") UUID testId) {
+        return testServiceImpl.findTestById(testId);
     }
 
-    public ResponseEntity<List<TestDto>> getAllTests() {
-        return new ResponseEntity<>(testServiceImpl.findAllTests(), HttpStatus.OK);
+    @Override
+    public List<TestDto> getAllTests() {
+        return testServiceImpl.findAllTests();
     }
 
-    public ResponseEntity<TestDto> updateTest(@RequestBody TestDto testDto) {
-        return new ResponseEntity<>(testServiceImpl.updateTest(testDto), HttpStatus.OK);
+    // todo updateTest without @PathVariable???
+    @Override
+    public TestDto updateTest(@RequestBody TestDto testDto) {
+        return testServiceImpl.updateTest(testDto);
     }
 
-    public ResponseEntity<TestDto> deleteTestById(@PathVariable("id") UUID testId) {
-        return new ResponseEntity<>(testServiceImpl.deleteTest(testId), HttpStatus.OK);
+    @Override
+    public TestDto deleteTestById(@PathVariable("id") UUID testId) {
+        return testServiceImpl.deleteTest(testId);
     }
 
-//    public ResponseEntity<Page<TestDto>> findAllTests(
-//            @RequestParam(name = "pageNumber", defaultValue = "0")
-//    )
 
-    // ...
+
+
 }
 

@@ -1,9 +1,7 @@
 package com.example.csmSystem.service;
 
-import com.example.csmSystem.model.entity.TestClass;
 import com.example.csmSystem.service.dto.TestDto;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -20,7 +18,7 @@ public interface TestService {
 
     TestDto deleteTest(UUID id);
 
-    Page<TestDto> findAll(int pageNumber, int pageSize);
+    Page<TestDto> findAllWithPagination(int pageNumber, int pageSize);
 
     List<TestDto> sortByOneFieldAsc(Sort sort);
 
