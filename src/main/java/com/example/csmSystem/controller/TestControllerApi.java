@@ -50,7 +50,7 @@ public interface TestControllerApi {
     @ApiResponse(responseCode = "204", description = "Http Status 204 NO CONTENT")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    TestDto deleteTestById(@PathVariable("id") UUID testId);
+    void deleteTestById(@PathVariable("id") UUID testId);
 
     @Operation(summary = "Find all \"Tests\" REST API with Pagination",
             description = "Find all \"Tests\" REST API is used to find all the \"Tests\" from the DB with Pagination")

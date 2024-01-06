@@ -16,7 +16,7 @@ public interface TestService {
 
     TestDto updateTest(TestDto testDto);
 
-    TestDto deleteTest(UUID id);
+    void deleteTest(UUID id);
 
     Page<TestDto> findAllWithPagination(int pageNumber, int pageSize);
 

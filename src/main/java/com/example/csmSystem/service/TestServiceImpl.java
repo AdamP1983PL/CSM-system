@@ -12,6 +12,7 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -27,10 +28,11 @@ public class TestServiceImpl implements TestService {
     public TestDto createTest(TestDto testDto) {
         log.info("Creating new Test {}, and saving it in the DB", testDto.getName());
 
-        if (testClassRepository.findTestByName(testDto.getName()).isPresent())
+        if (testClassRepository.findByName(testDto.getName()).isPresent())
             throw new NameAlreadyExistException("Name already exists in the DB");
 
-        return TestMapper.MAPPER.mapToTestDto(testClassRepository.save(TestMapper.MAPPER.mapToTest(testDto)));
+        TestClass testClass = TestMapper.MAPPER.mapToTest(testDto);
+        return TestMapper.MAPPER.mapToTestDto(testClassRepository.save(testClass));
     }
 
     @Override
@@ -59,14 +61,13 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public TestDto deleteTest(UUID id) {
+    public void deleteTest(UUID id) {
         log.info("Deleting Test by id = {} from the DB", id);
 
         TestClass testClass = testClassRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Test", "id", id));
         testClassRepository.deleteById(id);
-
-        return TestMapper.MAPPER.mapToTestDto(testClass);
+        // todo why deleteTest should return something???
     }
 
     @Override

@@ -8,6 +8,6 @@ import java.util.UUID;
 
 public interface TestClassRepository extends JpaRepository<TestClass, UUID> {
 
-    Optional<TestClass> findTestByName(String name);
+    Optional<TestClass> findByName(String name);
 
 }

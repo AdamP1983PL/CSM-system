@@ -39,8 +39,8 @@ public class TestController implements TestControllerApi {
     }
 
     @Override
-    public TestDto deleteTestById(@PathVariable("id") UUID testId) {
-        return testServiceImpl.deleteTest(testId);
+    public void deleteTestById(@PathVariable("id") UUID testId) {
+        testServiceImpl.deleteTest(testId);
     }
 
     @Override
